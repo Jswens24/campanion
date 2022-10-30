@@ -1,0 +1,40 @@
+.logout-btn {
+    margin: 20px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    align-self: center;
+    background-color: #F1DCA7;
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    box-sizing: border-box;
+    color: #41403e;
+    cursor: pointer;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 25px;
+    line-height: 23px;
+    padding: .75rem;
+    transition: all 235ms ease-in-out;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.main-btn:hover {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+    transform: translate3d(0, 2px, 0);
+}
+
+.main-btn:focus {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+
+.main-userpage {
+    background-color: #9B9B7A;
+    height: 200px;
+}

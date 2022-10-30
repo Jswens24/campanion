@@ -1,0 +1,81 @@
+form {
+    display: flex;
+    flex-direction: column;
+    height: 570px;
+    /* background-color: #9B9B7A; */
+    align-items: center;
+}
+
+.main-form-div {
+    background-image: url('https://drive.google.com/uc?export=view&id=1bnPbJZ65gD6wl-vnk3Hh2K2Cl0JyD4RX');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.form-div {
+    background-color: #9B9B7A;
+    border-radius: 5%;
+    opacity: 90%;
+    margin: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 450px;
+    font-size: 30px;
+}
+
+input {
+    font-size: 30px;
+    padding: 5px;
+    font-family: 'Urbanist', sans-serif;
+}
+
+label {
+    margin-top: 10px;
+    padding-top: 5px;
+    font-family: 'Urbanist', sans-serif;
+}
+
+.register-btn {
+    font-size: 25px;
+    background-color: #F1DCA7;
+    border: none;
+    padding: 15px;
+    font-family: 'Urbanist', sans-serif;
+}
+
+
+.register-btn {
+    align-self: center;
+    background-color: #F1DCA7;
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    box-sizing: border-box;
+    color: #41403e;
+    cursor: pointer;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 25px;
+    line-height: 23px;
+    padding: .75rem;
+    transition: all 235ms ease-in-out;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.register-btn:hover {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+    transform: translate3d(0, 2px, 0);
+}
+
+.register-btn:focus {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}

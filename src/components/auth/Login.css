@@ -1,0 +1,28 @@
+form {
+    display: flex;
+    flex-direction: column;
+    height: 570px;
+    /* background-color: #9B9B7A; */
+    align-items: center;
+    background-image: url('https://drive.google.com/uc?export=view&id=1Ix5iwiLKJOu9ZI0Mu_7dXlmLR-VBmmZj');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.form-div-register {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 350px;
+    font-size: 30px;
+}
+
+input {
+    font-size: 30px;
+    padding: 5px;
+}
+
+label {
+    margin-top: 10px;
+    padding-top: 5px;
+}
