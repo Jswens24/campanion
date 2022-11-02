@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './UserHomePage.css'
 
 const UserHomePage = () => {
@@ -26,6 +26,10 @@ const UserHomePage = () => {
             .catch(err => console.log(err))
     };
 
+    const onClick = () => {
+
+    }
+
     useEffect(() => {
         getUserName();
     }, [])
@@ -40,6 +44,10 @@ const UserHomePage = () => {
             </nav>
             <main className='main-userpage'>
                 <h2>Welcome  {name}!</h2>
+                <div className="list">This is a list</div>
+                <Link to='/newPost'>
+                    <button>Add New Adventure</button>
+                </Link>
             </main>
         </div>
     )
