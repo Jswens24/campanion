@@ -15,6 +15,13 @@ form {
     justify-content: space-around;
     height: 350px;
     font-size: 30px;
+    background-color: #9B9B7A;
+    border-radius: 5%;
+    opacity: 90%;
+    margin: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 50px;
 }
 
 input {

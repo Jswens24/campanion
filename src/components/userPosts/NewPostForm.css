@@ -1,0 +1,52 @@
+.form-new-camp {
+    padding-top: 50px;
+    background-image: url('https://drive.google.com/uc?export=view&id=1AaPadZ3dtSL2643JiQqy2afTiDGHNkDK');
+    background-size: cover;
+    height: 950px;
+}
+
+.form-div-new-post {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 750px;
+    font-size: 30px;
+    background-color: #9B9B7A;
+    border-radius: 5%;
+    opacity: 90%;
+    margin: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.p-in-form {
+    font-size: 35px;
+    font-family: 'Urbanist', sans-serif;
+    margin-bottom: -10px;
+}
+
+.select-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.my-checkbox {
+    transform: scale(2.5);
+    margin-left: 20px;
+}
+
+
+select {
+    width: 100%;
+    min-width: 15ch;
+    max-width: 30ch;
+    border: 1px solid var(--select-border);
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+    /* background-image: linear-gradient(to top, #f9f9f9, #fff 33%); */
+}

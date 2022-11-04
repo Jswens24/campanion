@@ -26,9 +26,6 @@ const UserHomePage = () => {
             .catch(err => console.log(err))
     };
 
-    const onClick = () => {
-
-    }
 
     useEffect(() => {
         getUserName();
@@ -49,6 +46,19 @@ const UserHomePage = () => {
                     <button>Add New Adventure</button>
                 </Link>
             </main>
+            <div>
+                <footer>
+                    <div className="foot-contain">
+                        <div className="bottom-menu">
+                            <button onClick={handleLogout} className='main-btn'>Logout</button>
+                        </div>
+                        <img alt='logo' src='https://drive.google.com/uc?export=view&id=1skBzqBM2HTYZx0h5TdGP5hNIcCzEp8l1' placeholder='logo' />
+                    </div>
+                    <div className="jess-info">
+                        <p>&#169;Copyright 2022 Jessica Swenson Web Services</p>
+                    </div>
+                </footer>
+            </div>
         </div>
     )
 };
