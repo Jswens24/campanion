@@ -51,7 +51,7 @@ const checkUsers = (req, res) => {
             }
             res.status(200).send(dbResult[0][0])
         })
-}
+};
 
 const getUserName = (req, res) => {
     const userId = req.query.currentId;
@@ -62,11 +62,32 @@ const getUserName = (req, res) => {
         .then((dbResult) => {
             res.status(200).send(dbResult[0][0])
         })
-}
+};
+
+const createPost = (req, res) => {
+    const title = req.body.title;
+    const pictureUrl = req.body.pictureUrl;
+    const coordinates = req.body.coordinates;
+    const fourByFour = req.body.fourByFour;
+    const dogFriendly = req.body.dogFriendly;
+    const month = req.body.month;
+    const comments = req.body.comments;
+    const currentId = req.body.currentId;
+    const campType = req.body.campType;
+
+    sequelize.query(`
+    INSERT INTO camp_entry (camp_entry_title, camp_entry_url, camp_entry_coordinates, camp_entry_comments, camp_entry_four_wheel, camp_entry_month, camp_entry_dog_friendly, camp_entry_camp_type, user_id)
+    VALUES ('${title}', '${pictureUrl}', '${coordinates}', '${comments}', '${fourByFour}', '${month}', '${dogFriendly}', '${campType}', '${currentId}') RETURNING *;
+    `)
+        .then((newPostResult) => {
+            console.log(newPostResult[0])
+            res.status(200).send(newPostResult[0][0])
+        })
+};
 
 
 
 
 
 
-module.exports = { createUser, checkUsers, getUserName }
+module.exports = { createUser, checkUsers, getUserName, createPost }

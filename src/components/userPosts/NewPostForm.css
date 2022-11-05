@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 750px;
+    height: 850px;
     font-size: 30px;
     background-color: #9B9B7A;
     border-radius: 5%;
@@ -17,6 +17,8 @@
     margin: 30px;
     padding-left: 30px;
     padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .p-in-form {
@@ -48,5 +50,4 @@ select {
     cursor: pointer;
     line-height: 1.1;
     background-color: #fff;
-    /* background-image: linear-gradient(to top, #f9f9f9, #fff 33%); */
 }
