@@ -85,9 +85,20 @@ const createPost = (req, res) => {
         })
 };
 
+const getCampEntries = (req, res) => {
+    const userId = req.query.currentId;
+
+    sequelize.query(`
+    SELECT * FROM camp_entry WHERE user_id = ${userId}
+    `)
+        .then((dbResult) => {
+            res.status(200).send(dbResult[0])
+        })
+};
 
 
 
 
 
-module.exports = { createUser, checkUsers, getUserName, createPost }
+
+module.exports = { createUser, checkUsers, getUserName, createPost, getCampEntries }

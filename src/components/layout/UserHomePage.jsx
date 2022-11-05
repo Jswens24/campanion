@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import ListDisplay from '../userPosts/ListDisplay';
 import './UserHomePage.css'
 
 const UserHomePage = () => {
@@ -37,13 +38,21 @@ const UserHomePage = () => {
         <div>
             <nav>
                 <img alt='logo' className='logo' src='https://drive.google.com/uc?export=view&id=1skBzqBM2HTYZx0h5TdGP5hNIcCzEp8l1' />
+                <h2>Welcome  {name}!</h2>
                 <button onClick={handleLogout} className='logout-btn'>Logout</button>
             </nav>
             <main className='main-userpage'>
-                <h2>Welcome  {name}!</h2>
-                <div className="list">This is a list</div>
+                <div className="list-container">
+                    <h3>{name}'s List:</h3>
+                    <div>
+                        <ListDisplay />
+                        <h4>entry 1</h4>
+                        <h4>entry 2</h4>
+                        <h4>entry 3</h4>
+                    </div>
+                </div>
                 <Link to='/newPost'>
-                    <button>Add New Adventure</button>
+                    <button className='go-to-new-post'>Add New Adventure</button>
                 </Link>
             </main>
             <div>
