@@ -1,0 +1,36 @@
+.camp-entry-card {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-left-radius: 18px 70px;
+    border-top-right-radius: 11px 65px;
+    border-bottom-left-radius: 55px 9px;
+    border-bottom-right-radius: 60px 12px;
+
+    /* display: block; */
+    position: relative;
+    border: solid 3px #6e7491;
+    padding: 10px 20px;
+    /* margin: 100px auto 0; */
+    margin: 20px;
+    font-size: 17px;
+    line-height: 28px;
+    transform: rotate(-1deg);
+    box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
+    transition: all 0.13s ease-in;
+}
+
+.camp-entry-card:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
+}
+
+.camp-title-list {
+    margin: 0;
+    font-family: 'Urbanist', sans-serif;
+}
+
+.camp-img-list {
+    height: 60px;
+}

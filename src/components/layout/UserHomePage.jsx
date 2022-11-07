@@ -43,12 +43,8 @@ const UserHomePage = () => {
             </nav>
             <main className='main-userpage'>
                 <div className="list-container">
-                    <h3>{name}'s List:</h3>
-                    <div>
+                    <div className='list-item-container'>
                         <ListDisplay />
-                        <h4>entry 1</h4>
-                        <h4>entry 2</h4>
-                        <h4>entry 3</h4>
                     </div>
                 </div>
                 <Link to='/newPost'>

@@ -3,6 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import ListItem from './ListItem';
+import './ListDisplay.css';
 
 
 const ListDisplay = () => {
@@ -30,7 +31,7 @@ const ListDisplay = () => {
 
 
     return (
-        <div>
+        <div className='list-display-flex'>
             {entries.map((entry, index) => {
                 return <ListItem entry={entry} />
             })}

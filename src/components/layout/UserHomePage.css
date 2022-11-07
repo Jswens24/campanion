@@ -107,9 +107,21 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 450px;
+    height: 550px;
+    display: flex;
+    width: 60%;
+    overflow: auto;
+
 }
 
-h3 {
+/* .list-item-container {
+    /* display: flex;
+    overflow: auto; */
+/* display: flex;
+    flex-direction: column; */
+/* display: flex; */
+/*  */
+
+*/ h3 {
     font-family: 'Urbanist', sans-serif;
 }
