@@ -89,10 +89,21 @@ const getCampEntries = (req, res) => {
     const userId = req.query.currentId;
 
     sequelize.query(`
-    SELECT * FROM camp_entry WHERE user_id = ${userId}
+    SELECT * FROM camp_entry WHERE user_id = ${userId};
     `)
         .then((dbResult) => {
             res.status(200).send(dbResult[0])
+        })
+};
+
+const getEntryDetails = (req, res) => {
+    const entryId = req.query.id;
+
+    sequelize.query(`
+    SELECT * FROM camp_entry WHERE camp_entry_id = ${entryId};
+    `)
+        .then((dbResult) => {
+            res.status(200).send(dbResult[0][0])
         })
 };
 
@@ -101,4 +112,4 @@ const getCampEntries = (req, res) => {
 
 
 
-module.exports = { createUser, checkUsers, getUserName, createPost, getCampEntries }
+module.exports = { createUser, checkUsers, getUserName, createPost, getCampEntries, getEntryDetails }

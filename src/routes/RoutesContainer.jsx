@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Login from '../components/auth/Login';
 import Register from '../components/auth/Register';
+import DetailView from '../components/detailView/DetailView';
 import NoAccountHomePage from '../components/layout/NoAccountHomePage';
 import UserHomePage from '../components/layout/UserHomePage';
 import NewPostForm from '../components/userPosts/NewPostForm';
@@ -17,6 +18,7 @@ const RoutesContainer = () => {
                 <Route path='/register' element={<Register />} />
                 <Route path='/userHomePage/:id' element={<UserHomePage />} />
                 <Route path='/newPost' element={<NewPostForm />} />
+                <Route path='/detailView/:id' element={<DetailView />} />
             </Routes>
         </div>
     )
