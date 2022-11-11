@@ -21,8 +21,8 @@ const DetailCard = (props) => {
                 <h4>{props.entryObj.camp_entry_comments}</h4>
             </div>
             <div>
-                <EditEntryBtn />
-                <DeleteBtn />
+                <EditEntryBtn entryObj={props.entryObj} />
+                <DeleteBtn entryObj={props.entryObj} />
             </div>
         </div>
     )

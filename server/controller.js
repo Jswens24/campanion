@@ -107,9 +107,20 @@ const getEntryDetails = (req, res) => {
         })
 };
 
+const deleteEntry = (req, res) => {
+    const { campId } = req.params;
+
+    sequelize.query(`
+    DELETE FROM camp_entry WHERE camp_entry_id = ${campId}
+    `)
+        .then((dbResult) => {
+            res.status(200).send(dbResult)
+        })
+};
 
 
 
 
 
-module.exports = { createUser, checkUsers, getUserName, createPost, getCampEntries, getEntryDetails }
+
+module.exports = { createUser, checkUsers, getUserName, createPost, getCampEntries, getEntryDetails, deleteEntry }

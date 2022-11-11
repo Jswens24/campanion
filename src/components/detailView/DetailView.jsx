@@ -31,6 +31,7 @@ const DetailView = () => {
             })
             .then((res) => {
                 setEntryObj(res.data)
+                console.log(entryObj)
             })
             .catch(err => console.log(err))
 
