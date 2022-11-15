@@ -10,8 +10,8 @@ const EditForm = () => {
     const [title, setTitle] = useState('');
     const [pictureUrl, setPictureUrl] = useState('');
     const [coordinates, setCoordinates] = useState('');
-    const [fourByFour, setFourByFour] = useState(false);
-    const [dogFriendly, setDogFriendly] = useState(false);
+    const [fourByFour, setFourByFour] = useState('');
+    const [dogFriendly, setDogFriendly] = useState('');
     const [month, setMonth] = useState('');
     const [comments, setComments] = useState('');
     const [campType, setCampType] = useState('');
@@ -43,43 +43,49 @@ const EditForm = () => {
 
     };
 
-    const handleEditPost = () => {
-        if (title === !campObj.camp_entry_title) {
-            const newTitle = title;
+    const handleEditPost = (e) => {
+        e.preventDefault();
+
+        if (title.length === !title.length) {
+            let newTitle = title;
             setNewArr([...newArr, newTitle]);
         }
-        if (pictureUrl === !campObj.camp_entry_url) {
-            const newUrl = pictureUrl;
+        if (pictureUrl.length === !pictureUrl.length) {
+            let newUrl = pictureUrl;
             setNewArr([...newArr, newUrl]);
         }
-        if (coordinates === !campObj.camp_entry_coordinates) {
-            const newCoordinates = coordinates;
+        if (coordinates.length === !coordinates.length) {
+            let newCoordinates = coordinates;
             setNewArr([...newArr, newCoordinates]);
         }
-        if (fourByFour === !campObj.camp_entry_four_wheel) {
-            const newFourWheel = fourByFour;
+        if (fourByFour.length === !fourByFour.length) {
+            let newFourWheel = fourByFour;
             setNewArr([...newArr, newFourWheel]);
         }
-        if (dogFriendly === !campObj.camp_entry_dog_friendly) {
-            const newDogFriendly = dogFriendly;
+        if (dogFriendly.length === !dogFriendly.length) {
+            let newDogFriendly = dogFriendly;
             setNewArr([...newArr, newDogFriendly]);
         }
-        if (month === !campObj.camp_entry_month) {
-            const newMonth = month;
+        if (month.length === !month.length) {
+            let newMonth = month;
             setNewArr([...newArr, newMonth]);
         }
-        if (comments === !campObj.camp_entry_comments) {
-            const newComments = comments;
+        if (comments.length === !comments.length) {
+            let newComments = comments;
             setNewArr([...newArr, newComments]);
         }
-        if (campType === !campObj.camp_entry_camp_type) {
-            const newCampType = campType;
+        if (campType.length === !campType.length) {
+            let newCampType = campType;
             setNewArr([...newArr, newCampType]);
         }
+
 
         console.log({ newArr })
 
     };
+
+
+
 
     useEffect(() => {
         getCampEntry();
@@ -92,8 +98,8 @@ const EditForm = () => {
                 <button onClick={handleHomeBtn} className='logout-btn'>Home</button>
                 <button onClick={handleLogout} className='logout-btn'>Logout</button>
             </nav>
-            <form onSubmit={handleEditPost} className='form-new-camp form-edit-camp'>
-                <div className="form-div-new-post" >
+            <form onSubmit={handleEditPost} className='form-edit-camp'>
+                <div className="form-edit-camp-div" >
                     <label> Title:
                         <br />
                         <input
@@ -120,24 +126,16 @@ const EditForm = () => {
                     </label>
                     <p className='p-in-form'>Select all the apply:</p>
                     <div className="select-options">
-                        <label> 4x4 Needed:
-                            <select
-                                placeholder={campObj.camp_entry_four_wheel}
-                                onChange={e => setFourByFour(e.target.value)}
-                            >
-                                <option value=''>True</option>
-                                <option value='false'>False</option>
-                            </select>
-                        </label>
-                        <label> Dog Friendly:
-                            <select
-                                placeholder={campObj.camp_entry_dog_friendly}
-                                onChange={e => setDogFriendly(e.target.value)}
-                            >
-                                <option value='true'>True</option>
-                                <option value='false'>False</option>
-                            </select>
-                        </label>
+                        <p> 4x4 Needed:
+                            <br />
+                            <button className='main-btn' onClick={e => setFourByFour(true)}>Yes</button>
+                            <button className='main-btn' onClick={e => setFourByFour(false)}>No</button>
+                        </p>
+                        <p className='p-edit'> Dog Friendly:
+                            <br />
+                            <button className='main-btn' onClick={e => setDogFriendly(true)}>Yes</button>
+                            <button className='main-btn' onClick={e => setDogFriendly(false)}>No</button>
+                        </p>
                         <label>Month Camped:
                             <select
                                 placeholder={campObj.camp_entry_month}
@@ -160,7 +158,7 @@ const EditForm = () => {
                             <br />
                             <input
                                 type='text'
-                                value={campObj.camp_entry_camp_type}
+                                placeholder={campObj.camp_entry_camp_type}
                                 onChange={e => setCampType(e.target.value)}
                             />
                         </label>
@@ -169,7 +167,7 @@ const EditForm = () => {
                             <textarea
                                 rows='5'
                                 cols='45'
-                                value={campObj.camp_entry_comments}
+                                placeholder={campObj.camp_entry_comments}
                                 onChange={e => setComments(e.target.value)}
                             >
                             </textarea>
