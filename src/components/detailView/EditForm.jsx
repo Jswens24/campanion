@@ -7,9 +7,9 @@ import './EditForm.css';
 
 const EditForm = () => {
     const [campObj, setCampObj] = useState({});
-    const [title, setTitle] = useState('');
-    const [pictureUrl, setPictureUrl] = useState('');
-    const [coordinates, setCoordinates] = useState('');
+    const [title, setTitle] = useState(campObj.camp_entry_title)
+    const [pictureUrl, setPictureUrl] = useState(campObj.camp_entry_url);
+    const [coordinates, setCoordinates] = useState(campObj.camp_entry_coordinates);
     const [fourByFour, setFourByFour] = useState('');
     const [dogFriendly, setDogFriendly] = useState('');
     const [month, setMonth] = useState('');
@@ -46,15 +46,13 @@ const EditForm = () => {
     const handleEditPost = (e) => {
         e.preventDefault();
 
-        if (title.length === !title.length) {
+        if (title === !campObj.camp_entry_title) {
             let newTitle = title;
             setNewArr([...newArr, newTitle]);
-        }
-        if (pictureUrl.length === !pictureUrl.length) {
+        } else if (pictureUrl === !campObj.camp_entry_url) {
             let newUrl = pictureUrl;
             setNewArr([...newArr, newUrl]);
-        }
-        if (coordinates.length === !coordinates.length) {
+        } else if (coordinates === !campObj.camp_entry_coordinates) {
             let newCoordinates = coordinates;
             setNewArr([...newArr, newCoordinates]);
         }
@@ -78,7 +76,6 @@ const EditForm = () => {
             let newCampType = campType;
             setNewArr([...newArr, newCampType]);
         }
-
 
         console.log({ newArr })
 
