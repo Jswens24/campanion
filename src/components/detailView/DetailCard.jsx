@@ -16,6 +16,7 @@ const DetailCard = (props) => {
                 <p>Dog Friendly: {props.entryObj.camp_entry_dog_friendly
                     ? 'Yes' : 'No'}</p>
                 <p>Coordinates: {props.entryObj.camp_entry_coordinates}</p>
+                <p>Month Visited: {props.entryObj.camp_entry_month}</p>
             </div>
             <div className='details-comments'>
                 <h4>{props.entryObj.camp_entry_comments}</h4>
