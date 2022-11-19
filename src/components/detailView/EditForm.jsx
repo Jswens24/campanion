@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -7,17 +8,19 @@ import './EditForm.css';
 
 const EditForm = () => {
     const [campObj, setCampObj] = useState({});
-    const [title, setTitle] = useState('')
-    const [pictureUrl, setPictureUrl] = useState('');
-    const [coordinates, setCoordinates] = useState('');
-    const [fourByFour, setFourByFour] = useState('');
-    const [dogFriendly, setDogFriendly] = useState('');
-    const [month, setMonth] = useState('');
-    const [comments, setComments] = useState('');
-    const [campType, setCampType] = useState('');
-    const [newArr, setNewArr] = useState([]);
+    const [newObj, setNewObj] = useState({});
+
+    const titleRef = useRef();
+    const pictureRef = useRef();
+    const coordinatesRef = useRef();
+    const fourByFourRef = useRef();
+    const dogFriendlyRef = useRef();
+    const monthRef = useRef();
+    const commentsRef = useRef();
+    const campTypeRef = useRef();
 
     const prevMonth = campObj.camp_entry_month;
+
 
 
     const { id } = useParams();
@@ -48,39 +51,17 @@ const EditForm = () => {
     const handleEditPost = (e) => {
         e.preventDefault();
 
-        // if (title === !campObj.camp_entry_title) {
-        //     let newTitle = title;
-        //     setNewArr([...newArr, newTitle]);
-        // } else if (pictureUrl === !campObj.camp_entry_url) {
-        //     let newUrl = pictureUrl;
-        //     setNewArr([...newArr, newUrl]);
-        // } else if (coordinates === !campObj.camp_entry_coordinates) {
-        //     let newCoordinates = coordinates;
-        //     setNewArr([...newArr, newCoordinates]);
-        // }
-        // if (fourByFour.length === !fourByFour.length) {
-        //     let newFourWheel = fourByFour;
-        //     setNewArr([...newArr, newFourWheel]);
-        // }
-        // if (dogFriendly.length === !dogFriendly.length) {
-        //     let newDogFriendly = dogFriendly;
-        //     setNewArr([...newArr, newDogFriendly]);
-        // }
-        // if (month.length === !month.length) {
-        //     let newMonth = month;
-        //     setNewArr([...newArr, newMonth]);
-        // }
-        // if (comments.length === !comments.length) {
-        //     let newComments = comments;
-        //     setNewArr([...newArr, newComments]);
-        // }
-        // if (campType.length === !campType.length) {
-        //     let newCampType = campType;
-        //     setNewArr([...newArr, newCampType]);
-        // }
-
-        setNewArr([title, pictureUrl, coordinates, fourByFour, dogFriendly, month, comments, campType])
-        console.log({ newArr })
+        setNewObj({
+            camp_entry_camp_title: titleRef.current.value,
+            camp_entry_url: pictureRef.current.value,
+            camp_entry_coordinates: coordinatesRef.current.value,
+            camp_entry_four_wheel: fourByFourRef.current.value,
+            camp_entry_dog_friendly: dogFriendlyRef.current.value,
+            camp_entry_month: monthRef.current.value,
+            camp_entry_comments: commentsRef.current.value,
+            camp_entry_camp_type: campTypeRef.current.value
+        })
+        console.log({ newObj })
 
     };
 
@@ -105,7 +86,7 @@ const EditForm = () => {
                         <input
                             type='text'
                             defaultValue={campObj.camp_entry_title}
-                            onChange={e => setTitle(e.target.value)}
+                            ref={titleRef}
                         />
                     </label>
                     <label> Picture URL:
@@ -113,7 +94,7 @@ const EditForm = () => {
                         <input
                             type='text'
                             defaultValue={campObj.camp_entry_url}
-                            onChange={e => setPictureUrl(e.target.value)}
+                            ref={pictureRef}
                         />
                     </label>
                     <label> Coordinates:
@@ -121,14 +102,14 @@ const EditForm = () => {
                         <input
                             type='text'
                             defaultValue={campObj.camp_entry_coordinates}
-                            onChange={e => setCoordinates(e.target.value)}
+                            ref={coordinatesRef}
                         />
                     </label>
                     <p className='p-in-form'>Select all the apply:</p>
                     <div className="select-options">
                         <label> 4x4 Needed:
                             <select
-                                onChange={e => setFourByFour(e.target.value)}
+                                ref={fourByFourRef}
                             >
                                 <option value='true' selected={campObj.camp_entry_four_wheel}>True</option>
                                 <option value='false' selected={!campObj.camp_entry_four_wheel}>False</option>
@@ -136,7 +117,7 @@ const EditForm = () => {
                         </label>
                         <label> Dog Friendly:
                             <select
-                                onChange={e => setDogFriendly(e.target.value)}
+                                ref={dogFriendlyRef}
                             >
                                 <option value='true' selected={campObj.camp_entry_dog_friendly}>True</option>
                                 <option value='false' selected={!campObj.camp_entry_dog_friendly}>False</option>
@@ -144,7 +125,8 @@ const EditForm = () => {
                         </label>
                         <label>Month Camped:
                             <select
-                                onChange={e => setMonth(e.target.value)}>
+                                ref={monthRef}
+                            >
                                 <option value='January' selected={prevMonth === 'January'}>January</option>
                                 <option value='February' selected={prevMonth === 'February'}>February</option>
                                 <option value='March' selected={prevMonth === 'March'}>March</option>
@@ -164,7 +146,7 @@ const EditForm = () => {
                             <input
                                 type='text'
                                 defaultValue={campObj.camp_entry_camp_type}
-                                onChange={e => setCampType(e.target.value)}
+                                ref={campTypeRef}
                             />
                         </label>
                         <label>Comments:
@@ -173,12 +155,12 @@ const EditForm = () => {
                                 rows='5'
                                 cols='45'
                                 defaultValue={campObj.camp_entry_comments}
-                                onChange={e => setComments(e.target.value)}
+                                ref={commentsRef}
                             >
                             </textarea>
                         </label>
-                        <button className='main-btn' type='submit'>Submit</button>
                     </div>
+                    <button className='main-btn' type='submit'>Submit</button>
                 </div>
             </form >
             <footer>
