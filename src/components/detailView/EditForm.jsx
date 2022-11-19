@@ -79,6 +79,7 @@ const EditForm = () => {
         //     setNewArr([...newArr, newCampType]);
         // }
 
+        setNewArr([title, pictureUrl, coordinates, fourByFour, dogFriendly, month, comments, campType])
         console.log({ newArr })
 
     };
