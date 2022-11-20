@@ -48,21 +48,32 @@ const EditForm = () => {
 
     };
 
-    const handleEditPost = (e) => {
-        e.preventDefault();
-
+    const handleClick = () => {
         setNewObj({
-            camp_entry_camp_title: titleRef.current.value,
+            camp_entry_title: titleRef.current.value,
             camp_entry_url: pictureRef.current.value,
             camp_entry_coordinates: coordinatesRef.current.value,
             camp_entry_four_wheel: fourByFourRef.current.value,
             camp_entry_dog_friendly: dogFriendlyRef.current.value,
             camp_entry_month: monthRef.current.value,
             camp_entry_comments: commentsRef.current.value,
-            camp_entry_camp_type: campTypeRef.current.value
+            camp_entry_camp_type: campTypeRef.current.value,
+            camp_entry_id: campObj.camp_entry_id
         })
-        console.log({ newObj })
+    }
 
+    const handleEditPost = (e) => {
+        e.preventDefault();
+
+        axios
+            .put(`http://localhost:4004/api/editEntryDetails/${campObj.camp_entry_id}`, newObj)
+            .then((res) => {
+                console.log(res.data);
+                alert('You have successfully edited an entry');
+                navigate(`/userHomePage/${currentId}`);
+            })
+            .catch(err => console.log(err))
+        // console.log({ newObj })
     };
 
 
@@ -160,7 +171,7 @@ const EditForm = () => {
                             </textarea>
                         </label>
                     </div>
-                    <button className='main-btn' type='submit'>Submit</button>
+                    <button onClick={handleClick} className='main-btn' type='submit'>Submit</button>
                 </div>
             </form >
             <footer>

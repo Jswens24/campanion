@@ -118,9 +118,22 @@ const deleteEntry = (req, res) => {
         })
 };
 
+const editEntryDetails = (req, res) => {
+    const { camp_entry_title, camp_entry_url, camp_entry_coordinates, camp_entry_four_wheel, camp_entry_dog_friendly, camp_entry_month, camp_entry_comments, camp_entry_camp_type, camp_entry_id } = req.body
+
+    sequelize.query(`
+    UPDATE camp_entry
+    SET camp_entry_title = '${camp_entry_title}', camp_entry_url = '${camp_entry_url}', camp_entry_coordinates = '${camp_entry_coordinates}', camp_entry_four_wheel = '${camp_entry_four_wheel}', camp_entry_dog_friendly = '${camp_entry_dog_friendly}', camp_entry_month = '${camp_entry_month}', camp_entry_comments = '${camp_entry_comments}', camp_entry_camp_type = '${camp_entry_camp_type}'
+    WHERE camp_entry_id = '${camp_entry_id}'
+    `)
+        .then((dbResult) => {
+            res.status(200).send(dbResult[0][0])
+        })
+};
 
 
 
 
 
-module.exports = { createUser, checkUsers, getUserName, createPost, getCampEntries, getEntryDetails, deleteEntry }
+
+module.exports = { createUser, checkUsers, getUserName, createPost, getCampEntries, getEntryDetails, deleteEntry, editEntryDetails }
