@@ -9,6 +9,7 @@ import './EditForm.css';
 const EditForm = () => {
     const [campObj, setCampObj] = useState({});
     const [newObj, setNewObj] = useState({});
+    const [loading, setLoading] = useState(false)
 
     const titleRef = useRef();
     const pictureRef = useRef();
@@ -80,111 +81,124 @@ const EditForm = () => {
 
 
     useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+        }, 100)
         getCampEntry();
     }, [])
 
     return (
         <div>
-            <nav>
-                <img alt='logo' className='logo' src='https://drive.google.com/uc?export=view&id=1skBzqBM2HTYZx0h5TdGP5hNIcCzEp8l1' />
-                <button onClick={handleHomeBtn} className='logout-btn'>Home</button>
-                <button onClick={handleLogout} className='logout-btn'>Logout</button>
-            </nav>
-            <form onSubmit={handleEditPost} className='form-edit-camp'>
-                <div className="form-edit-camp-div" >
-                    <label> Title:
-                        <br />
-                        <input
-                            type='text'
-                            defaultValue={campObj.camp_entry_title}
-                            ref={titleRef}
-                        />
-                    </label>
-                    <label> Picture URL:
-                        <br />
-                        <input
-                            type='text'
-                            defaultValue={campObj.camp_entry_url}
-                            ref={pictureRef}
-                        />
-                    </label>
-                    <label> Coordinates:
-                        <br />
-                        <input
-                            type='text'
-                            defaultValue={campObj.camp_entry_coordinates}
-                            ref={coordinatesRef}
-                        />
-                    </label>
-                    <p className='p-in-form'>Select all the apply:</p>
-                    <div className="select-options">
-                        <label> 4x4 Needed:
-                            <select
-                                ref={fourByFourRef}
-                            >
-                                <option value='true' selected={campObj.camp_entry_four_wheel}>True</option>
-                                <option value='false' selected={!campObj.camp_entry_four_wheel}>False</option>
-                            </select>
-                        </label>
-                        <label> Dog Friendly:
-                            <select
-                                ref={dogFriendlyRef}
-                            >
-                                <option value='true' selected={campObj.camp_entry_dog_friendly}>True</option>
-                                <option value='false' selected={!campObj.camp_entry_dog_friendly}>False</option>
-                            </select>
-                        </label>
-                        <label>Month Camped:
-                            <select
-                                ref={monthRef}
-                            >
-                                <option value='January' selected={prevMonth === 'January'}>January</option>
-                                <option value='February' selected={prevMonth === 'February'}>February</option>
-                                <option value='March' selected={prevMonth === 'March'}>March</option>
-                                <option value='April' selected={prevMonth === 'April'}>April</option>
-                                <option value='May' selected={prevMonth === 'May'}>May</option>
-                                <option value='June' selected={prevMonth === 'June'}>June</option>
-                                <option value='July' selected={prevMonth === 'July'}>July</option>
-                                <option value='August' selected={prevMonth === 'August'}>August</option>
-                                <option value='September' selected={prevMonth === 'September'}>September</option>
-                                <option value='October' selected={prevMonth === 'October'}>October</option>
-                                <option value='November' selected={prevMonth === 'November'}>November</option>
-                                <option value='December' selected={prevMonth === 'December'}>December</option>
-                            </select>
-                        </label>
-                        <label> Camp Type:
-                            <br />
-                            <input
-                                type='text'
-                                defaultValue={campObj.camp_entry_camp_type}
-                                ref={campTypeRef}
-                            />
-                        </label>
-                        <label>Comments:
-                            <br />
-                            <textarea
-                                rows='5'
-                                cols='45'
-                                defaultValue={campObj.camp_entry_comments}
-                                ref={commentsRef}
-                            >
-                            </textarea>
-                        </label>
-                    </div>
-                    <button onClick={handleClick} className='main-btn' type='submit'>Submit</button>
+            {loading ? (
+                <div className="loader-container">
+                    <div className="spinner"></div>
                 </div>
-            </form >
-            <footer>
-                <div className="foot-contain">
-                    <div className="bottom-menu">
-                        <button onClick={handleLogout} className='main-btn'>Logout</button>
-                    </div>
-                    <img alt='logo' src='https://drive.google.com/uc?export=view&id=1skBzqBM2HTYZx0h5TdGP5hNIcCzEp8l1' placeholder='logo' />
+            ) : (
+                <div>
+                    <nav>
+                        <img alt='logo' className='logo' src='https://drive.google.com/uc?export=view&id=1skBzqBM2HTYZx0h5TdGP5hNIcCzEp8l1' />
+                        <button onClick={handleHomeBtn} className='logout-btn'>Home</button>
+                        <button onClick={handleLogout} className='logout-btn'>Logout</button>
+                    </nav>
+                    <form onSubmit={handleEditPost} className='form-edit-camp'>
+                        <div className="form-edit-camp-div" >
+                            <label> Title:
+                                <br />
+                                <input
+                                    type='text'
+                                    defaultValue={campObj.camp_entry_title}
+                                    ref={titleRef}
+                                />
+                            </label>
+                            <label> Picture URL:
+                                <br />
+                                <input
+                                    type='text'
+                                    defaultValue={campObj.camp_entry_url}
+                                    ref={pictureRef}
+                                />
+                            </label>
+                            <label> Coordinates:
+                                <br />
+                                <input
+                                    type='text'
+                                    defaultValue={campObj.camp_entry_coordinates}
+                                    ref={coordinatesRef}
+                                />
+                            </label>
+                            <p className='p-in-form'>Select all the apply:</p>
+                            <div className="select-options">
+                                <label> 4x4 Needed:
+                                    <select
+                                        ref={fourByFourRef}
+                                    >
+                                        <option value='true' selected={campObj.camp_entry_four_wheel}>True</option>
+                                        <option value='false' selected={!campObj.camp_entry_four_wheel}>False</option>
+                                    </select>
+                                </label>
+                                <label> Dog Friendly:
+                                    <select
+                                        ref={dogFriendlyRef}
+                                    >
+                                        <option value='true' selected={campObj.camp_entry_dog_friendly}>True</option>
+                                        <option value='false' selected={!campObj.camp_entry_dog_friendly}>False</option>
+                                    </select>
+                                </label>
+                                <label>Month Camped:
+                                    <select
+                                        ref={monthRef}
+                                    >
+                                        <option value='January' selected={prevMonth === 'January'}>January</option>
+                                        <option value='February' selected={prevMonth === 'February'}>February</option>
+                                        <option value='March' selected={prevMonth === 'March'}>March</option>
+                                        <option value='April' selected={prevMonth === 'April'}>April</option>
+                                        <option value='May' selected={prevMonth === 'May'}>May</option>
+                                        <option value='June' selected={prevMonth === 'June'}>June</option>
+                                        <option value='July' selected={prevMonth === 'July'}>July</option>
+                                        <option value='August' selected={prevMonth === 'August'}>August</option>
+                                        <option value='September' selected={prevMonth === 'September'}>September</option>
+                                        <option value='October' selected={prevMonth === 'October'}>October</option>
+                                        <option value='November' selected={prevMonth === 'November'}>November</option>
+                                        <option value='December' selected={prevMonth === 'December'}>December</option>
+                                    </select>
+                                </label>
+                                <label> Camp Type:
+                                    <br />
+                                    <input
+                                        type='text'
+                                        defaultValue={campObj.camp_entry_camp_type}
+                                        ref={campTypeRef}
+                                    />
+                                </label>
+                                <label>Comments:
+                                    <br />
+                                    <textarea
+                                        rows='5'
+                                        cols='45'
+                                        defaultValue={campObj.camp_entry_comments}
+                                        ref={commentsRef}
+                                    >
+                                    </textarea>
+                                </label>
+                            </div>
+                            <button onClick={handleClick} className='main-btn' type='submit'>Submit</button>
+                        </div>
+                    </form >
+                    <footer>
+                        <div className="foot-contain">
+                            <div className="bottom-menu">
+                                <button onClick={handleLogout} className='main-btn'>Logout</button>
+                            </div>
+                            <img alt='logo' src='https://drive.google.com/uc?export=view&id=1skBzqBM2HTYZx0h5TdGP5hNIcCzEp8l1' placeholder='logo' />
+                        </div>
+                        <div className="jess-info">
+                            <p>&#169;Copyright 2022 Jessica Swenson Web Services</p>
+                        </div>
+                    </footer>
                 </div>
-                <div className="jess-info">
-                    <p>&#169;Copyright 2022 Jessica Swenson Web Services</p>
-                </div>
-            </footer>
+            )}
+
         </div >
     )
 };

@@ -25,7 +25,7 @@ const DeleteBtn = (props) => {
     return (
         <button
             onClick={deleteEntryHandler}
-            className="logout-btn">
+            className="delete-edit-btn">
             Delete
         </button>
     )

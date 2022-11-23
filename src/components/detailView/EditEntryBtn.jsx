@@ -6,8 +6,6 @@ const EditEntryBtn = (props) => {
     const navigate = useNavigate();
 
     const editEntryHandler = () => {
-        // axios
-        //     .put('http://localhost:4004/api/editEntry/', )
         console.log(props.entryObj)
 
         navigate(`/editForm/${props.entryObj.camp_entry_id}`)
@@ -18,7 +16,7 @@ const EditEntryBtn = (props) => {
     return (
         <button
             onClick={editEntryHandler}
-            className="logout-btn">
+            className="delete-edit-btn">
             Edit
         </button>
     )
