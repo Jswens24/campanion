@@ -2,9 +2,30 @@ import React, { useState, useEffect } from 'react';
 import DeleteBtn from './DeleteBtn';
 import './DetailCard.css';
 import EditEntryBtn from './EditEntryBtn';
+import WeatherDetailCard from './WeatherDetailCard';
+import convert from 'geo-coordinates-parser'
 
 const DetailCard = (props) => {
     const [loading, setLoading] = useState(false)
+
+    let coordinates = props.entryObj.camp_entry_coordinates;
+
+    let converted;
+
+    try {
+        converted = convert(coordinates);
+    }
+    catch (error) {
+        console.error(error);
+    };
+
+
+    // let lat = converted.decimalLatitude;
+    // let lon = converted.decimalLongitude;
+
+    console.log(converted)
+
+
 
     useEffect(() => {
         setLoading(true);
@@ -35,6 +56,7 @@ const DetailCard = (props) => {
                     <div className='details-comments'>
                         <h4>{props.entryObj.camp_entry_comments}</h4>
                     </div>
+                    {/* <WeatherDetailCard lat={converted.decimalLatitude} lon={converted.decimalLongitude} /> */}
                     <div>
                         <EditEntryBtn entryObj={props.entryObj} />
                         <DeleteBtn entryObj={props.entryObj} />
