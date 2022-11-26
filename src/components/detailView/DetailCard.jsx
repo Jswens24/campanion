@@ -6,7 +6,9 @@ import WeatherDetailCard from './WeatherDetailCard';
 import convert from 'geo-coordinates-parser'
 
 const DetailCard = (props) => {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const [lat, setLat] = useState('');
+    const [lon, setLon] = useState('');
 
     let coordinates = props.entryObj.camp_entry_coordinates;
 
@@ -56,7 +58,7 @@ const DetailCard = (props) => {
                     <div className='details-comments'>
                         <h4>{props.entryObj.camp_entry_comments}</h4>
                     </div>
-                    {/* <WeatherDetailCard lat={converted.decimalLatitude} lon={converted.decimalLongitude} /> */}
+                    <WeatherDetailCard lat={converted.decimalLatitude} lon={converted.decimalLongitude} />
                     <div>
                         <EditEntryBtn entryObj={props.entryObj} />
                         <DeleteBtn entryObj={props.entryObj} />
