@@ -4,28 +4,29 @@ import './DetailCard.css';
 import EditEntryBtn from './EditEntryBtn';
 import WeatherDetailCard from './WeatherDetailCard';
 import convert from 'geo-coordinates-parser'
+import MapComponent from './MapComponent';
 
 const DetailCard = (props) => {
     const [loading, setLoading] = useState(false);
-    const [lat, setLat] = useState('');
-    const [lon, setLon] = useState('');
 
-    let coordinates = props.entryObj.camp_entry_coordinates;
+
 
     let converted;
 
-    try {
-        converted = convert(coordinates);
+
+    if (props.entryObj.camp_entry_coordinates) {
+        let coordinates = props.entryObj.camp_entry_coordinates;
+        try {
+            converted = convert(coordinates);
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
-    catch (error) {
-        console.error(error);
-    };
 
 
-    // let lat = converted.decimalLatitude;
-    // let lon = converted.decimalLongitude;
-
-    console.log(converted)
+    // console.log({ props })
+    // console.log(converted)
 
 
 
@@ -35,6 +36,7 @@ const DetailCard = (props) => {
             setLoading(false);
         }, 100);
     }, []);
+
 
 
     return (
@@ -58,7 +60,13 @@ const DetailCard = (props) => {
                     <div className='details-comments'>
                         <h4>{props.entryObj.camp_entry_comments}</h4>
                     </div>
-                    <WeatherDetailCard lat={converted.decimalLatitude} lon={converted.decimalLongitude} />
+                    {converted && (
+                        <>
+                            <WeatherDetailCard lat={converted.decimalLatitude} lon={converted.decimalLongitude} />
+                            <MapComponent lat={converted.decimalLatitude} lon={converted.decimalLongitude} />
+                        </>
+                    )}
+
                     <div>
                         <EditEntryBtn entryObj={props.entryObj} />
                         <DeleteBtn entryObj={props.entryObj} />
