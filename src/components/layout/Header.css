@@ -3,9 +3,12 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 200px;
+    height: 170px;
     padding-left: 15px;
     padding-right: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
 .logo {

@@ -1,15 +1,17 @@
 .detail-img {
     height: 500px;
-    padding-top: 20px;
+    padding-top: 40px;
     border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
 }
 
 .details-comments {
     background-color: wheat;
+    margin-top: 40px;
     border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
     padding: 15px;
     border: 3px solid #333333;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
@@ -19,6 +21,7 @@
 
 .detail-card-div {
     font-family: 'Urbanist', sans-serif;
+    font-weight: bold;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,6 +29,32 @@
 
 .small-details-div {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+
+}
+
+.title-and-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+hr {
+    border: none;
+    border-top: 45px double #333;
+    color: black;
+    overflow: visible;
+    text-align: center;
+    width: 100%;
+    ;
+}
+
+hr:after {
+    content: 'Comments:';
+    padding: 0 4px;
+    position: relative;
+    top: -32px;
 }

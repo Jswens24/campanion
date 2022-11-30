@@ -37,4 +37,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #997b66;
+    padding-left: 20%;
+    padding-right: 20%;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    border: 3px solid #333333;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.api-contain {
+    display: flex;
 }

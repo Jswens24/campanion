@@ -1,3 +1,4 @@
+import './WeatherDetailCard.css'
 import React from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -30,12 +31,15 @@ const WeatherDetailCard = (props) => {
     }, [])
 
     return (
-        <div>
+        <div className='weather-card details-comments'>
             <p>Weather in {nearestCity}</p>
-            <img src={`https://www.weatherbit.io/static/img/icons/${weatherImg}.png`} placeholder='weather status' />
-            <img src={`https://www.weatherbit.io/static/img/icons/${weatherImg}.png`} placeholder='weather status' />
-            <p>Current temperature is {temp}</p>
+            <div className="weather-img-contain">
+                <img className='weather-img' src={`https://www.weatherbit.io/static/img/icons/${weatherImg}.png`} placeholder='weather status' />
+                <img className='weather-img' src={`https://www.weatherbit.io/static/img/icons/${weatherImg}.png`} placeholder='weather status' />
+                <img className='weather-img' src={`https://www.weatherbit.io/static/img/icons/${weatherImg}.png`} placeholder='weather status' />
+            </div>
             <p>Weather Condition: {weatherCondition}</p>
+            <p>Current temperature is {temp}</p>
         </div>
     )
 };
