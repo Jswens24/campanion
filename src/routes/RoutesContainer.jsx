@@ -6,6 +6,7 @@ import DetailView from '../components/detailView/DetailView';
 import EditForm from '../components/detailView/EditForm';
 import NoAccountHomePage from '../components/layout/NoAccountHomePage';
 import UserHomePage from '../components/layout/UserHomePage';
+import MyMap from '../components/Maps/MyMap';
 import NewPostForm from '../components/userPosts/NewPostForm';
 
 
@@ -21,6 +22,7 @@ const RoutesContainer = () => {
                 <Route path='/newPost' element={<NewPostForm />} />
                 <Route path='/detailView/:id' element={<DetailView />} />
                 <Route path='/editForm/:id' element={<EditForm />} />
+                <Route path='/myMap/' element={<MyMap />} />
             </Routes>
         </div>
     )

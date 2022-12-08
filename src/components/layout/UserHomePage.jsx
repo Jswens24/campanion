@@ -56,9 +56,14 @@ const UserHomePage = () => {
                                 <ListDisplay />
                             </div>
                         </div>
-                        <Link to='/newPost'>
-                            <button className='go-to-new-post'>Add New Adventure</button>
-                        </Link>
+                        <div className="side-btn-contain">
+                            {/* <Link to='/myMap'>
+                                <button className='go-to-new-post'>My Map</button>
+                            </Link> */}
+                            <Link to='/newPost'>
+                                <button className='go-to-new-post'>Add New Adventure</button>
+                            </Link>
+                        </div>
                     </main>
                     <div>
                         <footer>

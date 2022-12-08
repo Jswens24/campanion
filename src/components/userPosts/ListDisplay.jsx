@@ -9,6 +9,7 @@ import './ListDisplay.css';
 const ListDisplay = () => {
     const [entries, setEntries] = useState([]);
     const [filterValue, setFilterValue] = useState('All');
+    const [search, setSearch] = useState('');
 
     const currentId = localStorage.getItem('user_id');
 
@@ -26,10 +27,19 @@ const ListDisplay = () => {
             .catch(err => console.log(err))
     };
 
+    const updateSearchValue = (e) => {
+        setSearch(e.target.value);
+    };
+
+    const searchHandler = (entries) => {
+        console.log(search);
+        return entries.camp_entry_title.includes(search);
+    };
+
 
     const handleFilter = (entries) => {
         if (filterValue === 'All') {
-            return entries
+            return entries.camp_entry_title.includes(search);
         } else if (filterValue === 'fourByFourTrue') {
             return entries.camp_entry_four_wheel === true;
         } else if (filterValue === 'fourByFourFalse') {
@@ -39,6 +49,7 @@ const ListDisplay = () => {
         } else if (filterValue === 'dogFriendlyFalse') {
             return entries.camp_entry_dog_friendly === false;
         }
+
     }
 
     useEffect(() => {
@@ -48,20 +59,25 @@ const ListDisplay = () => {
 
     return (
         <div className='list-display-container'>
-            <div className='filter-div'>
-                <p>Filter By: </p>
-                <select onChange={e => setFilterValue(e.target.value)}>
-                    <option value='All'>All</option>
-                    <option value='fourByFourTrue'>4x4 Required</option>
-                    <option value='fourByFourFalse'>4x4 Not Required</option>
-                    <option value='dogFriendlyTrue'>Dog Friendly</option>
-                    <option value='dogFriendlyFalse'>Not Dog Friendly</option>
-                </select>
+            <div className="filter-search">
+                <div className='filter-div'>
+                    <p>Filter By: </p>
+                    <select onChange={e => setFilterValue(e.target.value)}>
+                        <option value='All'>All</option>
+                        <option value='fourByFourTrue'>4x4 Required</option>
+                        <option value='fourByFourFalse'>4x4 Not Required</option>
+                        <option value='dogFriendlyTrue'>Dog Friendly</option>
+                        <option value='dogFriendlyFalse'>Not Dog Friendly</option>
+                    </select>
+                </div>
+                <div className="filter-div">
+                    <p>Search:</p>
+                    <input onChange={updateSearchValue} type='text' />
+                </div>
             </div>
             <div className='list-display-flex'>
                 {entries
                     .filter(handleFilter)
-
                     .map((entry, index) => {
                         return <ListItem entry={entry} />
                     })}
